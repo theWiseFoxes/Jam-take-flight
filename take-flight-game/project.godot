@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="take-flight-game"
+run/main_scene="res://Scenes/node_3d.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/Rowsa/Documents/GitHub/Jam-take-flight/take-flight-game/videos/testFilm.avi"
 
 [rendering]
 
