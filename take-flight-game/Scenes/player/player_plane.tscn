@@ -1,24 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdn2lrvysuom7"]
 
-[ext_resource type="Script" path="res://Scripts/dragPhysics.gd" id="1_ar1mm"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_n3p22"]
+[ext_resource type="Shape3D" uid="uid://no4jvgnn4eqc" path="res://Scenes/player/player_box.tres" id="2_x5jqt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pf532"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_04mx1"]
-size = Vector3(0.279, 0.054, 0.108)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y2wax"]
 
 [node name="player" type="RigidBody3D"]
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_pf532")
-script = ExtResource("1_ar1mm")
-bodyShape = SubResource("BoxShape3D_04mx1")
+script = ExtResource("1_n3p22")
+upwardForceValue = 20.0
+drag_coefficient = Vector3(0, 2, 0)
+bodyShape = ExtResource("2_x5jqt")
+rotationalSpeedDeg = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("2_x5jqt")
 
 [node name="NewBoxMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.279, 0, 0, 0, 0.054, 0, 0, 0, 0.108, 0, 0, 0)
 mesh = SubResource("BoxMesh_y2wax")
 skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_04mx1")
