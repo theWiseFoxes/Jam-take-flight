@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/gameScenes/3d_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ObstacleSpawningData="*res://Scripts/obstacleSpawningData.gd"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/Rowsa/github/Github/pre-jam-project/testFilm.avi"
