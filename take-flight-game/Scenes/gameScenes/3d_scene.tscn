@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0y4dyau3t2m"]
+
+[ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="1_eqkc1"]
+[ext_resource type="PackedScene" uid="uid://cdn2lrvysuom7" path="res://Scenes/player/player_plane.tscn" id="2_0k75b"]
+[ext_resource type="Script" path="res://Scripts/moveWithPlayer.gd" id="3_5we1y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gka7o"]
+resource_local_to_scene = true
+size = Vector3(0.279, 0.054, 0.108)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7k1ab"]
+size = Vector3(0.5, 0.1, 0.3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.92793, 0, 0, 0, 1.92793, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+centered = false
+pixel_size = 0.0023
+texture = ExtResource("1_eqkc1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.483318, 0.477309, -0.73388, -0.00906418, 0.840977, 0.540995, 0.875398, -0.25482, 0.410786, -0.597284, 3.46042, 1.92937)
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_0k75b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.226, 3.333, 0.619)
+linear_velocity = Vector3(2, 0, 0)
+upwardForceValue = 10.0
+bodyShape = SubResource("BoxShape3D_gka7o")
+rotationalSpeedDeg = 90.0
+maxAngle = 30.0
+areaScale = Vector3(1, 10, 1)
+drag_coefficient = Vector3(0, 1.5, 0)
+
+[node name="CarMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.265, 2.17, 0.597)
+mesh = SubResource("BoxMesh_7k1ab")
+skeleton = NodePath("../..")
+script = ExtResource("3_5we1y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.421, 2.89, 1.787)
+script = ExtResource("3_5we1y")
