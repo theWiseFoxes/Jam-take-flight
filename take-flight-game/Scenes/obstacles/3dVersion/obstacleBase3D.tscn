@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxptbdo7fafog"]
+
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacleBase3d.gd" id="1_ksmmc"]
+
+[node name="obstacle" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138946, -0.117639, 0.273318)
+script = ExtResource("1_ksmmc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

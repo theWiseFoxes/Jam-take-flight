@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="1_eqkc1"]
 [ext_resource type="PackedScene" uid="uid://cdn2lrvysuom7" path="res://Scenes/player/player_plane.tscn" id="2_0k75b"]
 [ext_resource type="Script" path="res://Scripts/moveWithPlayer.gd" id="3_5we1y"]
-[ext_resource type="Script" path="res://Scripts/obstacle3DSpawner.gd" id="4_2rqip"]
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacle3DSpawner.gd" id="4_2rqip"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gka7o"]
 resource_local_to_scene = true
