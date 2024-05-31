@@ -10,8 +10,7 @@ var location:Vector2:
         location.y = location3D.y
         return location
 
-@export var objectPath3D:String
-@export var objectPath2D:String
+@export var type:obstacleType
 
 @export var location3D:Vector3:
     set(newValue):
@@ -24,9 +23,7 @@ var location:Vector2:
         return location3D
 
 
-func _init(path3D:String, path2D:String):
-    objectPath3D = path3D
-    objectPath2D = path2D
-
+func _init(oType:obstacleType):
+    type = oType
     location3D = Vector3(0,0,0)
     location = Vector2(0,0)

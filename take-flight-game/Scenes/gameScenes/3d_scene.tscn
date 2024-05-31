@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0y4dyau3t2m"]
+[gd_scene load_steps=8 format=3 uid="uid://c0y4dyau3t2m"]
 
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="1_eqkc1"]
 [ext_resource type="PackedScene" uid="uid://cdn2lrvysuom7" path="res://Scenes/player/player_plane.tscn" id="2_0k75b"]
 [ext_resource type="Script" path="res://Scripts/moveWithPlayer.gd" id="3_5we1y"]
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle3DSpawner.gd" id="4_2rqip"]
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacleTypeList.gd" id="5_kd3sx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gka7o"]
 resource_local_to_scene = true
@@ -47,3 +48,6 @@ script = ExtResource("3_5we1y")
 
 [node name="obstacleSpawner" type="Node3D" parent="."]
 script = ExtResource("4_2rqip")
+
+[node name="obstacleTypeList" type="Node" parent="."]
+script = ExtResource("5_kd3sx")

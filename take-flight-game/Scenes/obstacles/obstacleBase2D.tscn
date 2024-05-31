@@ -22,6 +22,6 @@ func lockPosition():
 	ObstacleSpawningData.objectLocations.append(data)
 "
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Sprite2D" type="Sprite2D" groups=["obstacle"]]
 centered = false
 script = SubResource("GDScript_3vif4")

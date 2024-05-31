@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ianqhb1b2xs"]
+
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
+[ext_resource type="PackedScene" uid="uid://d0g665s7tcgmv" path="res://Scenes/obstacles/obstacleBase2D.tscn" id="1_qw7gf"]
+
+[node name="2dGameScene" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_qw7gf")]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_8birw")
