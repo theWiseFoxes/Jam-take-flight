@@ -1,32 +1,22 @@
+
+# a class to store data (location and type) about a specific obstacle in the game
 class_name obstaclesData extends Resource
 
-var location:Vector2:
-    set(newValue):
-        location = newValue
-        location3D.x = location.x
-        location3D.y = location.y
-    get:
-        location.x = location3D.x
-        location.y = location3D.y
-        return location
+# the obstacle type
+@export var type:obstacleType
 
-@export var objectPath3D:String
-@export var objectPath2D:String
+
+var location:Vector2
 
 @export var location3D:Vector3:
-    set(newValue):
-        location3D = newValue
-        location.x = location3D.x
-        location.y = location3D.y
-    get:
-        location3D.x = location.x
-        location3D.y = location.y
-        return location3D
+	set(newValue):
+		location3D = newValue
+		location.x = newValue.x
+		location.y = newValue.y
+	get:
+		return Vector3 (location.x, location.y, location3D.z)
 
 
-func _init(path3D:String, path2D:String):
-    objectPath3D = path3D
-    objectPath2D = path2D
-
-    location3D = Vector3(0,0,0)
-    location = Vector2(0,0)
+func _init(oType:obstacleType):
+	type = oType
+	location3D = Vector3(0,0,0)

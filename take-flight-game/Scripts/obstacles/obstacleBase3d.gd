@@ -1,4 +1,6 @@
 
+# most of this script is so you can edit the mesh and collision box from outside of the packed scene (packed scenes are like prefabs from unity)
+# only the stuff at the bottom is usefull
 @tool
 extends Node3D
 
@@ -41,3 +43,16 @@ func isMeshNode():
 
 
 
+
+# a script that adds the obstacle to a the global ObstacleSpawningData.objectLocations list
+# also ensures its type to the ObstacleSpawningData.obstacleTypes dictionary
+@export var type:obstacleType
+
+func _ready():
+	if not Engine.is_editor_hint():
+		if not ObstacleSpawningData.obstacleTypes.has(type.name):
+			ObstacleSpawningData.obstacleTypes[type.name] = type
+
+		var data = obstaclesData.new(ObstacleSpawningData.obstacleTypes[type.name])
+		data.location3D = position
+		ObstacleSpawningData.objectLocations.append(data)

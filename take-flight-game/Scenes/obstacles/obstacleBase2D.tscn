@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0g665s7tcgmv"]
+
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacleBase2D.gd" id="1_h3mga"]
+
+[node name="Sprite2D" type="Sprite2D"]
+centered = false
+script = ExtResource("1_h3mga")
