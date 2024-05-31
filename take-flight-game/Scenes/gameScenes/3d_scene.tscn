@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0y4dyau3t2m"]
+[gd_scene load_steps=12 format=3 uid="uid://c0y4dyau3t2m"]
 
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="1_eqkc1"]
 [ext_resource type="PackedScene" uid="uid://cdn2lrvysuom7" path="res://Scenes/player/player_plane.tscn" id="2_0k75b"]
-[ext_resource type="Script" path="res://Scripts/moveWithPlayer.gd" id="3_5we1y"]
+[ext_resource type="Script" path="res://Scripts/cameraScript.gd" id="3_5we1y"]
+[ext_resource type="Script" path="res://Scripts/carScript.gd" id="3_hcua3"]
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle3DSpawner.gd" id="4_2rqip"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gka7o"]
@@ -11,6 +12,22 @@ size = Vector3(0.279, 0.054, 0.108)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7k1ab"]
 size = Vector3(0.5, 0.1, 0.3)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xuh51"]
+height = 1.0
+radius = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5qsmm"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2b7yy"]
+size = Vector3(14.5838, 1, 4.26019)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m3vfq"]
+height = 0.841654
+radius = 0.337474
 
 [node name="Node3D" type="Node3D"]
 
@@ -26,24 +43,57 @@ transform = Transform3D(0.483318, 0.477309, -0.73388, -0.00906418, 0.840977, 0.5
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("2_0k75b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.226, 3.333, 0.619)
-linear_velocity = Vector3(2, 0, 0)
-upwardForceValue = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.226, 2.7265, 0.619)
+sleeping = true
+freeze = true
+max_contacts_reported = 5
+contact_monitor = true
+upwardForceValue = 15.0
 bodyShape = SubResource("BoxShape3D_gka7o")
 rotationalSpeedDeg = 90.0
+startSpeed = Vector3(2, 6, 0)
 maxAngle = 30.0
-areaScale = Vector3(1, 10, 1)
-drag_coefficient = Vector3(0, 1.5, 0)
+minAngle = -30.0
+areaScale = Vector3(1, 5, 1)
+airDensity = 1.204
 
 [node name="CarMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.265, 2.17, 0.597)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.265, 0.293088, 0.597)
 mesh = SubResource("BoxMesh_7k1ab")
 skeleton = NodePath("../..")
-script = ExtResource("3_5we1y")
+script = ExtResource("3_hcua3")
+
+[node name="RayCast3D" type="RayCast3D" parent="CarMesh"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.421, 2.89, 1.787)
 script = ExtResource("3_5we1y")
+topOffset = 0.4
+bottomOffset = -0.4
 
 [node name="obstacleSpawner" type="Node3D" parent="."]
 script = ExtResource("4_2rqip")
+
+[node name="bin" type="StaticBody3D" parent="." groups=["goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.871, 0.304, 0.619)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bin"]
+shape = SubResource("CylinderShape3D_xuh51")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bin"]
+mesh = SubResource("CylinderMesh_5qsmm")
+
+[node name="floor" type="StaticBody3D" parent="." groups=["floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7919, -0.240675, 0.284562)
+shape = SubResource("BoxShape3D_2b7yy")
+
+[node name="outerCan" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.871, 0.196111, 0.619)
+shape = SubResource("CylinderShape3D_m3vfq")
+
+[connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
