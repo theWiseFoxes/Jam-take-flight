@@ -1,5 +1,6 @@
 extends Node
 
+# spawn obstacles from the global ObstacleSpawningData.objectLocations object, almost the exact same as the 2d verision
 var loadedTypes:Dictionary
 
 # Called when the node enters the scene tree for the first time.
