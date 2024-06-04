@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3 uid="uid://fkyenjwwtno8"]
+
+[ext_resource type="Script" path="res://Scenes/gameScenes/level_select.gd" id="1_2mr8o"]
+
+[node name="Level Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mr8o")
+
+[node name="Label Level Select" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 12.0
+offset_right = 284.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 66
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Plane Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -293.5
+offset_top = 369.0
+offset_right = 304.5
+offset_bottom = 414.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Slow"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 144.0
+offset_right = 122.0
+offset_bottom = 189.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Living Room"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button Level Next" type="Button" parent="Level Name"]
+offset_left = 233.0
+offset_top = 7.0
+offset_right = 266.0
+offset_bottom = 40.0
+text = ">"
+
+[node name="Button Level Previous" type="Button" parent="Level Name"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 7.0
+offset_right = -4.0
+offset_bottom = 40.0
+text = "<"
+
+[node name="Label Plane Select" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_top = 250.0
+offset_right = 281.0
+offset_bottom = 341.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 66
+text = "Plane Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button Plane Next" type="Button" parent="Label Plane Select"]
+offset_left = 361.0
+offset_top = 122.0
+offset_right = 394.0
+offset_bottom = 155.0
+text = ">"
+
+[node name="Button Plane Previous" type="Button" parent="Label Plane Select"]
+offset_left = 183.0
+offset_top = 122.0
+offset_right = 216.0
+offset_bottom = 155.0
+text = "<"
+
+[node name="Lets Go!" type="Button" parent="."]
+layout_mode = 2
+offset_left = 548.0
+offset_top = 507.0
+offset_right = 618.0
+offset_bottom = 563.0
+text = "Lets Go!"
+
+[node name="Back2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 559.0
+offset_right = 87.0
+offset_bottom = 621.0
+text = "Back
+"
+
+[connection signal="pressed" from="Level Name/Button Level Next" to="." method="_on_button_level_next_pressed"]
+[connection signal="pressed" from="Level Name/Button Level Previous" to="." method="_on_button_level_previous_pressed"]
+[connection signal="pressed" from="Label Plane Select/Button Plane Next" to="." method="_on_button_plane_next_pressed"]
+[connection signal="pressed" from="Label Plane Select/Button Plane Previous" to="." method="_on_button_plane_previous_pressed"]
+[connection signal="pressed" from="Lets Go!" to="." method="_on_lets_go_pressed"]
+[connection signal="pressed" from="Back2" to="." method="_on_back_pressed"]

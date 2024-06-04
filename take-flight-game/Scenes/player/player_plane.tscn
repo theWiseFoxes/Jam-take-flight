@@ -17,13 +17,9 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(-0.8, 0.04, 0)
 script = ExtResource("1_n3p22")
 upwardForceValue = 20.0
-rotationalSpeedDeg = null
-startSpeed = null
-maxAngle = null
-minAngle = null
-areaScale = null
+bodyShape = SubResource("BoxShape3D_0j6jb")
+rotationalSpeedDeg = 20.0
 drag_coefficient = Vector3(0, 2, 0)
-airDensity = null
 
 [node name="playerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0j6jb")
