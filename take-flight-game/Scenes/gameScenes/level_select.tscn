@@ -37,11 +37,11 @@ offset_right = 304.5
 offset_bottom = 414.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
-text = "Fast"
+text = "Slow"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level name" type="Label" parent="."]
+[node name="Level Name" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -56,14 +56,14 @@ text = "Living Room"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button Level Next" type="Button" parent="Level name"]
+[node name="Button Level Next" type="Button" parent="Level Name"]
 offset_left = 233.0
 offset_top = 7.0
 offset_right = 266.0
 offset_bottom = 40.0
 text = ">"
 
-[node name="Button Level Previous" type="Button" parent="Level name"]
+[node name="Button Level Previous" type="Button" parent="Level Name"]
 layout_mode = 0
 offset_left = -37.0
 offset_top = 7.0
@@ -117,8 +117,8 @@ offset_bottom = 621.0
 text = "Back
 "
 
-[connection signal="pressed" from="Level name/Button Level Next" to="." method="_on_button_level_next_pressed"]
-[connection signal="pressed" from="Level name/Button Level Previous" to="." method="_on_button_level_previous_pressed"]
+[connection signal="pressed" from="Level Name/Button Level Next" to="." method="_on_button_level_next_pressed"]
+[connection signal="pressed" from="Level Name/Button Level Previous" to="." method="_on_button_level_previous_pressed"]
 [connection signal="pressed" from="Label Plane Select/Button Plane Next" to="." method="_on_button_plane_next_pressed"]
 [connection signal="pressed" from="Label Plane Select/Button Plane Previous" to="." method="_on_button_plane_previous_pressed"]
 [connection signal="pressed" from="Lets Go!" to="." method="_on_lets_go_pressed"]
