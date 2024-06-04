@@ -21,7 +21,7 @@ ObstacleSpawningData="*res://Scripts/obstacles/obstacleSpawningData.gd"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Rowsa/github/Github/pre-jam-project/testFilm.avi"
+movie_writer/movie_file="C:/Users/Rowsa/Downloads/testFilm.mp4.avi"
 
 [input]
 

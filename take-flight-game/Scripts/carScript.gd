@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@onready var player:RigidBody3D = get_node("../player")
+@onready var player = get_tree().get_first_node_in_group("player")
 var offset
 var ray:RayCast3D
 var stopped = false

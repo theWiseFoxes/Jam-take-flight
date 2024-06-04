@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4ruef3eb83oi"]
 
-[ext_resource type="Script" path="res://Scripts/obstacle_bouncing_ball.gd" id="1_jqjb5"]
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacle_bouncing_ball.gd" id="1_jqjb5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3865k"]
 bounce = 1.0

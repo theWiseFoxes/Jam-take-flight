@@ -48,14 +48,14 @@ func isMeshNode():
 # also ensures its type to the ObstacleSpawningData.obstacleTypes dictionary
 @export var type:obstacleType
 
-func _ready():
-	if not Engine.is_editor_hint():
-		if not ObstacleSpawningData.obstacleTypes.has(type.name):
-			ObstacleSpawningData.obstacleTypes[type.name] = type
-
-		var data = obstaclesData.new(ObstacleSpawningData.obstacleTypes[type.name])
-		data.location3D = position
-		ObstacleSpawningData.objectLocations.append(data)
+#func _ready():
+	#if not Engine.is_editor_hint():
+	#	if not ObstacleSpawningData.obstacleTypes.has(type.name):
+	#		ObstacleSpawningData.obstacleTypes[type.name] = type
+#
+#		var data = obstaclesData.new(ObstacleSpawningData.obstacleTypes[type.name])
+#		data.location3D = position
+#		ObstacleSpawningData.objectLocations.append(data)
 
 
 func _on_area_3d_body_entered(body):

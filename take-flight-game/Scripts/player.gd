@@ -38,11 +38,12 @@ func _ready():
 
 			
 func _physics_process (_delta ):
+	var temp_velocity = roundMinToZero(linear_velocity, cutoff)
+	dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
+	dragForce = dragForce * (-linear_velocity.sign())
+	apply_central_force(dragForce)
 	if not stopped:
-		var temp_velocity = roundMinToZero(linear_velocity, cutoff)
-		dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
-		dragForce = dragForce * (-linear_velocity.sign())
-		apply_central_force(dragForce)
+		
 		if Input.is_action_pressed("FanButton"):
 			applyUpward()
 		else:
@@ -67,13 +68,13 @@ func applyDownward():
 func _on_body_entered(body:Node):
 	
 	print("entered body"+body.name)
-	stopped = true
 	print("could be floor")
-	if not stopped:
-		stopped = true
-		plane_collided.emit()
+	
 	if body.is_in_group("floor"):
 		print("floors")
+		if not stopped:
+			stopped = true
+			plane_collided.emit()
 		# dead
 	elif body.is_in_group("goal"):
 		# win
@@ -81,6 +82,9 @@ func _on_body_entered(body:Node):
 	elif body.is_in_group("obstacle"):
 		# win
 		print("hit")
+		if not stopped:
+			stopped = true
+			plane_collided.emit()
 		
 		
 		
