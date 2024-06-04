@@ -13,10 +13,11 @@ size = Vector3(0.279, 0.054, 0.108)
 [node name="player" type="RigidBody3D"]
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_pf532")
+center_of_mass_mode = 1
+center_of_mass = Vector3(-0.8, 0.04, 0)
 script = ExtResource("1_n3p22")
 upwardForceValue = 20.0
-bodyShape = SubResource("BoxShape3D_0j6jb")
-rotationalSpeedDeg = 20.0
+rotationalSpeedDeg = null
 startSpeed = null
 maxAngle = null
 minAngle = null
@@ -24,10 +25,10 @@ areaScale = null
 drag_coefficient = Vector3(0, 2, 0)
 airDensity = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="playerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0j6jb")
 
-[node name="NewBoxMesh" type="MeshInstance3D" parent="."]
+[node name="playerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.279, 0, 0, 0, 0.054, 0, 0, 0, 0.108, 0, 0, 0)
 mesh = SubResource("BoxMesh_y2wax")
 skeleton = NodePath("../..")

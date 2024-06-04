@@ -3,11 +3,10 @@ extends Node3D
 @export var topOffset:float
 @export var bottomOffset:float
 
-var player:RigidBody3D
+@onready var player = %player
 var offset:float
 
 func _ready():
-	player = get_node("../player")
 	offset = self.position.x - player.position.x
 
 

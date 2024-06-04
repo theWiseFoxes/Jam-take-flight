@@ -1,21 +1,24 @@
 extends RigidBody3D
 
-@export var upwardForceValue:float
-@export var bodyShape:BoxShape3D
-@export var rotationalSpeedDeg:float
-@export var startSpeed:Vector3
+signal plane_collided
+
+@export var upwardForceValue:float = 15
+@export var rotationalSpeedDeg:float = 30
+@export var startSpeed:Vector3 = Vector3(2,0,0)
 @export var maxAngle:float = 20.0
 @export var minAngle:float = -20.0
 
 @export var areaScale:Vector3 = Vector3(1,4,1)
 @export var drag_coefficient:Vector3 = Vector3(0, 1.5, 0)
 @export var airDensity:float = 1.204
-@onready var planeMesh:Node3D = get_node("NewBoxMesh")
+
+@onready var bodyShape:Shape3D = $playerCollision.shape
+@onready var planeMesh:MeshInstance3D = $playerMesh
 @onready var rotationalSpeedRad:float = deg_to_rad(rotationalSpeedDeg)
 var dragForce:Vector3 = Vector3(0,0,0)
 var cutoff:float = 0.0001
 var area:Vector3 = Vector3(0.01,0.01,0.01)
-var stopped:bool = false
+var stopped = false
 
 
 func roundMinToZero(vec: Vector3, minimum: float):
@@ -27,35 +30,19 @@ func roundMinToZero(vec: Vector3, minimum: float):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	stopped = true
-	sleeping = true
-	freeze = true
-	area.z = bodyShape.size.x * bodyShape.size.y
-	area.x = bodyShape.size.z * bodyShape.size.y
-	area.y = bodyShape.size.x * bodyShape.size.z
+	area.z = planeMesh.mesh.size.x * planeMesh.mesh.size.y
+	area.x = planeMesh.mesh.size.z * planeMesh.mesh.size.y
+	area.y = planeMesh.mesh.size.x * planeMesh.mesh.size.z
 	area *= areaScale
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if stopped:
-		if Input.is_action_pressed("FanButton"):
-			sleeping = false
-			stopped = false
-			freeze = false
-			applyUpward()
-			linear_velocity = startSpeed
-			print("launch")
+	linear_velocity = startSpeed
 
 			
 func _physics_process (_delta ):
-		
-	var temp_velocity = roundMinToZero(linear_velocity, cutoff)
-	dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
-	dragForce = dragForce * (-linear_velocity.sign())
-	apply_central_force(dragForce)
-
 	if not stopped:
+		var temp_velocity = roundMinToZero(linear_velocity, cutoff)
+		dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
+		dragForce = dragForce * (-linear_velocity.sign())
+		apply_central_force(dragForce)
 		if Input.is_action_pressed("FanButton"):
 			applyUpward()
 		else:
@@ -78,12 +65,17 @@ func applyDownward():
 
 
 func _on_body_entered(body:Node):
-	stopped = true
 	print("could be floor")
+	if not stopped:
+		stopped = true
+		plane_collided.emit()
 	if body.is_in_group("floor"):
 		print("floors")
 		# dead
 	elif body.is_in_group("goal"):
 		# win
 		print("goal")
+	elif body.is_in_group("obstacle"):
+		# win
+		print("hit")
 

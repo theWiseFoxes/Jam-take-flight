@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://chjy4i16ags2x"]
+
+[ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="1_1ikqq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+centered = false
+texture = ExtResource("1_1ikqq")
+region_enabled = true
+region_rect = Rect2(0, 485.736, 2360, 1154.26)
