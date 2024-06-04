@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bromsj0wkcwby"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7hgb"]
+size = Vector3(1.88306, 0.557251, 0.55426)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1mljr"]
+top_radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_htkxh"]
+_data = [Vector2(0, 0), 0.0, 4.24615, 0, 0, Vector2(0.492754, 0.945055), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.71795, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0nd2"]
+curve = SubResource("Curve_htkxh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ygggx"]
+lifetime_randomness = 0.2
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 9, 0)
+scale_curve = SubResource("CurveTexture_s0nd2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_m4dpt"]
+size = Vector2(0.25, 0.01)
+
+[node name="Drone" type="Area3D"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 2.27935, 2.22434, 0.594162)
+gravity_space_override = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441528, 0.00421143, -0.00942993)
+shape = SubResource("BoxShape3D_s7hgb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.756911, 0, 0)
+mesh = SubResource("CylinderMesh_1mljr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457766, 0.00421143, -0.00942993)
+amount = 30
+lifetime = 3.0
+explosiveness = 0.08
+randomness = 0.3
+process_material = SubResource("ParticleProcessMaterial_ygggx")
+draw_pass_1 = SubResource("QuadMesh_m4dpt")

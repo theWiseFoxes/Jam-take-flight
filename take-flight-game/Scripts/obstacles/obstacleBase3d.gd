@@ -56,3 +56,8 @@ func _ready():
 		var data = obstaclesData.new(ObstacleSpawningData.obstacleTypes[type.name])
 		data.location3D = position
 		ObstacleSpawningData.objectLocations.append(data)
+
+
+func _on_area_3d_body_entered(body):
+	
+	pass # Replace with function body.

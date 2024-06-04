@@ -17,12 +17,7 @@ script = ExtResource("1_n3p22")
 upwardForceValue = 20.0
 bodyShape = SubResource("BoxShape3D_0j6jb")
 rotationalSpeedDeg = 20.0
-startSpeed = null
-maxAngle = null
-minAngle = null
-areaScale = null
 drag_coefficient = Vector3(0, 2, 0)
-airDensity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0j6jb")

@@ -78,6 +78,8 @@ func applyDownward():
 
 
 func _on_body_entered(body:Node):
+	
+	print("entered body"+body.name)
 	stopped = true
 	print("could be floor")
 	if body.is_in_group("floor"):
@@ -86,4 +88,12 @@ func _on_body_entered(body:Node):
 	elif body.is_in_group("goal"):
 		# win
 		print("goal")
+		
+		
+		
+func applyFlies():
+	print("flies on")
+	mass += 0.3
+	
+	
 

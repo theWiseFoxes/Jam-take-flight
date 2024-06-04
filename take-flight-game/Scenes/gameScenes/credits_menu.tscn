@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://hyw7yrxqdhdk"]
+
+[ext_resource type="Script" path="res://Scenes/gameScenes/credits_menu.gd" id="1_su8ns"]
+
+[node name="Credits Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_su8ns")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = -101.0
+offset_right = 31.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Programming" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 242.0
+offset_right = 317.0
+offset_bottom = 287.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Sasha Greene (EZduzzit): Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 152.0
+offset_right = 317.0
+offset_bottom = 197.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Rowan: Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -478.0
+offset_top = 197.0
+offset_right = 470.0
+offset_bottom = 242.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Ricardo (Khromos): Environment Art / Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -478.0
+offset_top = 287.0
+offset_right = 470.0
+offset_bottom = 332.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "LI7E: 2D Art"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming4" type="Label" parent="Programming4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -474.0
+offset_top = 45.0
+offset_right = 474.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "ReliantToast: Character Art"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -478.0
+offset_top = 107.0
+offset_right = 470.0
+offset_bottom = 152.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Mog: Music / SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 16.0
+offset_right = 284.0
+offset_bottom = 107.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 66
+text = "Wee's Playground"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
