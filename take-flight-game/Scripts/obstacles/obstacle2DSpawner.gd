@@ -43,11 +43,10 @@ func updateGlobal():
 
 func scale3Dto2D(vec3d: Vector3):
     var vec2d = (Vector2(vec3d.x, vec3d.y)) * cellSize
-    vec2d.y = scaleHeight - vec2d.y
-    return vec2d * spriteScale
+    vec2d.y = (scaleHeight * spriteScale.y) - vec2d.y
+    return vec2d
 
 func scale2Dto3D(vec2d: Vector2):
-    vec2d = vec2d / spriteScale
-    vec2d.y = scaleHeight - vec2d.y
+    vec2d.y = (scaleHeight * spriteScale.y)  - vec2d.y
     vec2d = vec2d / cellSize
     return Vector3(vec2d.x, vec2d.y, 0)

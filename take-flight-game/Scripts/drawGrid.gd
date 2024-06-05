@@ -5,19 +5,19 @@ signal state_updated
 @export var placingObject: Node2D
 @export var lineColor: Color = Color.BLACK
 
+@onready var screen = %tempBackground.get_rect()
 @onready var rows = ObstacleSpawningData.gridRows
 @onready var columns = ObstacleSpawningData.gridColumns
-@onready var cellWidth: float = screen.size.y / columns
-@onready var cellHeight: float = screen.size.y / rows
-@onready var screen = %tempBackground.get_rect()
+@onready var cellWidth: float = (screen.size.x / columns) * %tempBackground.scale.x
+@onready var cellHeight: float = (screen.size.y / rows) * %tempBackground.scale.x
  
 func _draw():
 	screen = %tempBackground.get_rect()
 	var start = Vector2(0, 0)
 	var end = Vector2(0, screen.size.y)
 
-	cellWidth = screen.size.y / cellWidth
-	cellHeight = screen.size.y / cellHeight
+	cellWidth = (screen.size.x / columns) * %tempBackground.scale.x
+	cellHeight = (screen.size.y / rows) * %tempBackground.scale.x
 	var cellInc = Vector2(cellWidth, 0)
 	for rowNum in range(columns + 1):
 
