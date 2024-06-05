@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 ObstacleSpawningData="*res://Scripts/obstacles/obstacleSpawningData.gd"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/Rowsa/Downloads/testFilm.mp4.avi"

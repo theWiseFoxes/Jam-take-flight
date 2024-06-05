@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0y4dyau3t2m"]
+[gd_scene load_steps=18 format=3 uid="uid://c0y4dyau3t2m"]
 
 [ext_resource type="PackedScene" uid="uid://chjy4i16ags2x" path="res://Scenes/gameScenes/backgroundlayer3D.tscn" id="1_1ilih"]
 [ext_resource type="Script" path="res://Scripts/cameraScript.gd" id="3_5we1y"]
 [ext_resource type="Script" path="res://Scripts/carScript.gd" id="3_hcua3"]
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle3DSpawner.gd" id="4_2rqip"]
-[ext_resource type="PackedScene" uid="uid://bxptbdo7fafog" path="res://Scenes/obstacles/obstacleBase3D.tscn" id="6_05ryx"]
 [ext_resource type="PackedScene" uid="uid://c4ruef3eb83oi" path="res://Scenes/obstacles/obstacle_bouncing_ball.tscn" id="8_ksxhu"]
 [ext_resource type="PackedScene" uid="uid://dfaprsx3tdge" path="res://Scenes/obstacles/obstacle_iron_pipe.tscn" id="9_6mjcs"]
 [ext_resource type="PackedScene" uid="uid://cshgatlac37rk" path="res://Scenes/obstacles/obstacle_flies.tscn" id="10_s4vhm"]
@@ -36,20 +35,16 @@ radius = 0.337474
 friction = 0.25
 bounce = 0.5
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_76khr"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_q4haw"]
-radius = 1.0
-
 [node name="Node3D" type="Node3D"]
 
 [node name="backgroundLayer" parent="." instance=ExtResource("1_1ilih")]
-transform = Transform3D(1.00261, 0, 0, 0, 1.00261, 0, 0, 0, 1.00261, 0, 0, -2)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="gameLayer" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="gameLayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.724, 6.305, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.724, 6.305, 10)
 script = ExtResource("3_5we1y")
 topOffset = 0.7
 bottomOffset = -0.7
@@ -116,8 +111,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.138, 7.464, 0)
 
 [node name="ObstacleBrick" parent="gameLayer/obstacleSpawner" instance=ExtResource("13_pqxct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.263, 6.44686, 0)
-
-[node name="obstacle2" parent="gameLayer/obstacleSpawner" instance=ExtResource("6_05ryx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0562, 4.94243, 0)
-currMesh = SubResource("CapsuleMesh_76khr")
-currShape = SubResource("SphereShape3D_q4haw")

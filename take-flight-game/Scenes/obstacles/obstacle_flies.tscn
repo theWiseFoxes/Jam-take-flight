@@ -26,6 +26,8 @@ size = Vector2(0.1, 0.1)
 
 [node name="obstacle_flies" type="Area3D"]
 script = ExtResource("1_u8x3y")
+metadata/spriteFor2D = "res://icon.svg"
+metadata/version3D = "res://Scenes/obstacles/obstacle_flies.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_r4lip")

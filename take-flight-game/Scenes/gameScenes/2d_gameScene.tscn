@@ -1,11 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ianqhb1b2xs"]
+[gd_scene load_steps=5 format=3 uid="uid://4ianqhb1b2xs"]
 
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
-[ext_resource type="PackedScene" uid="uid://d0g665s7tcgmv" path="res://Scenes/obstacles/obstacleBase2D.tscn" id="1_qw7gf"]
+[ext_resource type="PackedScene" uid="uid://cjavb16ynt332" path="res://Scenes/obstacles/obstacleBase2D.tscn" id="1_qw7gf"]
+[ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="3_05ufi"]
+[ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="4_nvrp2"]
 
 [node name="2dGameScene" type="Node2D"]
 
-[node name="Sprite2D" parent="." instance=ExtResource("1_qw7gf")]
+[node name="tempBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nvrp2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 434.714, 2300, 1200)
+
+[node name="gridNode" type="Node2D" parent="." node_paths=PackedStringArray("placingObject")]
+unique_name_in_owner = true
+script = ExtResource("3_05ufi")
+placingObject = NodePath("../Spawner2D/Node2D")
 
 [node name="Spawner2D" type="Node2D" parent="."]
 script = ExtResource("1_8birw")
+
+[node name="Node2D" parent="Spawner2D" instance=ExtResource("1_qw7gf")]
+position = Vector2(433, 268)
+scale = Vector2(0.5, 0.5)
+metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
+
+[connection signal="state_updated" from="gridNode" to="Spawner2D" method="updateGlobal"]

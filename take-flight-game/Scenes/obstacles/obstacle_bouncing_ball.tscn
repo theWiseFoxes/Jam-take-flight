@@ -12,6 +12,8 @@ bounce = 1.0
 [node name="Obstacle_Bouncing_Ball" type="Node3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_jqjb5")
+metadata/version3D = "res://Scenes/obstacles/obstacle_bouncing_ball.tscn"
+metadata/spriteFor2D = "res://icon.svg"
 
 [node name="Rigidbody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

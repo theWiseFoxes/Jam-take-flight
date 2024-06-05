@@ -7,6 +7,8 @@ size = Vector3(1, 0.25, 1)
 size = Vector3(1, 0.25, 1)
 
 [node name="ObstacleWoodPlank" type="Node3D"]
+metadata/spriteFor2D = "res://icon.svg"
+metadata/version3D = "res://Scenes/obstacles/obstacle_wood_plank.tscn"
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 25.0
