@@ -1,15 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ianqhb1b2xs"]
+[gd_scene load_steps=6 format=3 uid="uid://4ianqhb1b2xs"]
 
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
 [ext_resource type="PackedScene" uid="uid://cjavb16ynt332" path="res://Scenes/obstacles/obstacleBase2D.tscn" id="1_qw7gf"]
 [ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="3_05ufi"]
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="4_nvrp2"]
 
+[sub_resource type="GDScript" id="GDScript_hm5k7"]
+script/source = "extends Camera2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="2dGameScene" type="Node2D"]
 
 [node name="tempBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
+position = Vector2(84, 87)
+scale = Vector2(0.405, 0.405)
 texture = ExtResource("4_nvrp2")
 centered = false
 region_enabled = true
@@ -26,5 +41,9 @@ script = ExtResource("1_8birw")
 [node name="Node2D" parent="Spawner2D" instance=ExtResource("1_qw7gf")]
 position = Vector2(433, 268)
 metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = SubResource("GDScript_hm5k7")
 
 [connection signal="state_updated" from="gridNode" to="Spawner2D" method="updateGlobal"]
