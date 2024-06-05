@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://xf5xhpqe83jn" path="res://icon.svg" id="1_8du1f"]
 
 [node name="obstacleSprite" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_8du1f")
 centered = false
+region_enabled = true
+region_rect = Rect2(14, 14, 100, 100)
 metadata/version3D = "res://Scenes/obstacles/obstacle_brick.tscn"

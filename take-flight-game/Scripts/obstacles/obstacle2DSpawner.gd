@@ -4,8 +4,9 @@ extends Node
 var baseObs = preload ("res://Scenes/obstacles/obstacleBase2D.tscn")
 var loadedTypes: Dictionary
 
-@onready var scaleHeight = %gridNode.screen.size.y
-@onready var cellScale = %gridNode.cellHeight
+@onready var scaleHeight = %tempBackground.get_rect().size.y
+@onready var cellSize = Vector2( %gridNode.cellWidth, %gridNode.cellHeight)
+@onready var spriteScale = %tempBackground.scale
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,11 +42,12 @@ func updateGlobal():
     get_tree().change_scene_to_file("res://Scenes/gameScenes/3d_scene.tscn")
 
 func scale3Dto2D(vec3d: Vector3):
-    var vec2d = (Vector2(vec3d.x, vec3d.y)) * cellScale
+    var vec2d = (Vector2(vec3d.x, vec3d.y)) * cellSize
     vec2d.y = scaleHeight - vec2d.y
-    return vec2d
+    return vec2d * spriteScale
 
 func scale2Dto3D(vec2d: Vector2):
-    var vec3d = Vector3(vec2d.x, vec2d.y, 0) / cellScale
-    vec3d.y = scaleHeight - vec3d.y
-    return vec3d
+    vec2d = vec2d / spriteScale
+    vec2d.y = scaleHeight - vec2d.y
+    vec2d = vec2d / cellSize
+    return Vector3(vec2d.x, vec2d.y, 0)

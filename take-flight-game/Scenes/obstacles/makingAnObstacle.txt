@@ -1,0 +1,11 @@
+A few things to remeber when working with obstacles, to make sure they sync across scenes properly
+
+1. 3d obstacles should have two metadata tags, 
+    a. version3D, string of path to the obstacles packed scene  
+    b. spriteFor2D, string of path to the obstacles 2d sprite
+
+2. obstacles should be a child of the obstacle spawner
+
+3. manually added obstacles to the 2d screen has some issues, manually placed obstacles should be on the 3d game screen
+
+4. each one meter in the 3d screen is equalivent to the length/height of one cell on the 2d screen

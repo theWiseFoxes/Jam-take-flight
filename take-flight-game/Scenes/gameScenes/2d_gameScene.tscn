@@ -25,7 +25,6 @@ script = ExtResource("1_8birw")
 
 [node name="Node2D" parent="Spawner2D" instance=ExtResource("1_qw7gf")]
 position = Vector2(433, 268)
-scale = Vector2(0.5, 0.5)
 metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
 
 [connection signal="state_updated" from="gridNode" to="Spawner2D" method="updateGlobal"]

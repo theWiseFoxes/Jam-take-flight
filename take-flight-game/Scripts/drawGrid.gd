@@ -2,21 +2,22 @@ extends Node2D
 
 signal state_updated
 
-@export var lineColor: Color = Color.BLACK
-@export var cellWidth: float = 1 / ObstacleSpawningData.backgroundScale3D
-@export var cellHeight: float = 1 / ObstacleSpawningData.backgroundScale3D
-@onready var screen = %tempBackground.get_rect()
-@onready var rows = screen.size.y / cellHeight
-@onready var columns = screen.size.x / cellWidth
 @export var placingObject: Node2D
+@export var lineColor: Color = Color.BLACK
+
+@onready var rows = ObstacleSpawningData.gridRows
+@onready var columns = ObstacleSpawningData.gridColumns
+@onready var cellWidth: float = screen.size.y / columns
+@onready var cellHeight: float = screen.size.y / rows
+@onready var screen = %tempBackground.get_rect()
  
 func _draw():
 	screen = %tempBackground.get_rect()
 	var start = Vector2(0, 0)
 	var end = Vector2(0, screen.size.y)
 
-	rows = screen.size.y / cellHeight
-	columns = screen.size.x / cellWidth
+	cellWidth = screen.size.y / cellWidth
+	cellHeight = screen.size.y / cellHeight
 	var cellInc = Vector2(cellWidth, 0)
 	for rowNum in range(columns + 1):
 

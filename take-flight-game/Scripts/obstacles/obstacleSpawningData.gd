@@ -6,4 +6,5 @@ extends Node
 var objectLocations: Dictionary
 
 # the width and height of the background in meters
-var backgroundScale3D: float = 0.01
+var gridRows: int = 12
+var gridColumns: int = 23

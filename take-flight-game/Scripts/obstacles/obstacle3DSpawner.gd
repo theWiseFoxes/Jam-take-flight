@@ -2,13 +2,13 @@ extends Node
 
 # spawn obstacles from the global ObstacleSpawningData.objectLocations object, almost the exact same as the 2d verision
 var loadedTypes: Dictionary
-
-func setupScale():
-    ObstacleSpawningData.backgroundScale3D = %backgroundLayer.pixel_size
+@export var obstacleSize: float = 1.0 
+@onready var backgroundSize = %backgroundLayer.region_rect.size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    setupScale()
+    ObstacleSpawningData.gridRows = (backgroundSize.y / obstacleSize)* %backgroundLayer.pixel_size
+    ObstacleSpawningData.gridColumns = (backgroundSize.x / obstacleSize)* %backgroundLayer.pixel_size
     loadAllObstacles()
 
 func loadAllObstacles():

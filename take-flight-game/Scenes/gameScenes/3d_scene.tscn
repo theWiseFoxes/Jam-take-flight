@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [node name="gameLayer" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="gameLayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.724, 6.305, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.724, 6.305, 2)
 script = ExtResource("3_5we1y")
 topOffset = 0.7
 bottomOffset = -0.7
@@ -94,20 +94,20 @@ areaScale = Vector3(1, 1, 1)
 script = ExtResource("4_2rqip")
 
 [node name="Obstacle_Bouncing Ball" parent="gameLayer/obstacleSpawner" instance=ExtResource("8_ksxhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5123, 3.074, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3, 0)
 
 [node name="Obstacle_Iron_Pipe" parent="gameLayer/obstacleSpawner" instance=ExtResource("9_6mjcs")]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 10.93, 1.683, 0)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 11, 2, 0)
 
 [node name="obstacle_flies" parent="gameLayer/obstacleSpawner" instance=ExtResource("10_s4vhm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.088, 3.791, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 
 [node name="Drone" parent="gameLayer/obstacleSpawner" instance=ExtResource("11_48sr5")]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 5.721, 3.0082, 0)
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 6, 3, 0)
 gravity = -15.0
 
 [node name="ObstacleWoodPlank" parent="gameLayer/obstacleSpawner" instance=ExtResource("12_vaeud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.138, 7.464, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 7, 0)
 
 [node name="ObstacleBrick" parent="gameLayer/obstacleSpawner" instance=ExtResource("13_pqxct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.263, 6.44686, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 0)

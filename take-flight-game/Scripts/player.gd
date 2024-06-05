@@ -22,75 +22,76 @@ var stopped = false
 
 
 func roundMinToZero(vec: Vector3, minimum: float):
-	var result: Vector3 = Vector3()
-	result.x = vec.x if abs(vec.x) >= minimum else 0.0
-	result.y = vec.y if abs(vec.y) >= minimum else 0.0
-	result.z = vec.z if abs(vec.z) >= minimum else 0.0
-	return result
+    var result: Vector3 = Vector3()
+    result.x = vec.x if abs(vec.x) >= minimum else 0.0
+    result.y = vec.y if abs(vec.y) >= minimum else 0.0
+    result.z = vec.z if abs(vec.z) >= minimum else 0.0
+    return result
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	area.z = planeMesh.mesh.size.x * planeMesh.mesh.size.y
-	area.x = planeMesh.mesh.size.z * planeMesh.mesh.size.y
-	area.y = planeMesh.mesh.size.x * planeMesh.mesh.size.z
-	area *= areaScale
-	linear_velocity = startSpeed
+    area.z = planeMesh.mesh.size.x * planeMesh.mesh.size.y
+    area.x = planeMesh.mesh.size.z * planeMesh.mesh.size.y
+    area.y = planeMesh.mesh.size.x * planeMesh.mesh.size.z
+    area *= areaScale
+    linear_velocity = startSpeed
 
-			
+            
 func _physics_process (_delta ):
-	var temp_velocity = roundMinToZero(linear_velocity, cutoff)
-	dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
-	dragForce = dragForce * (-linear_velocity.sign())
-	apply_central_force(dragForce)
-	if not stopped:
-		
-		if Input.is_action_pressed("FanButton"):
-			applyUpward()
-		else:
-			applyDownward()
+    var temp_velocity = roundMinToZero(linear_velocity, cutoff)
+    dragForce = (temp_velocity * temp_velocity) * 0.5 * drag_coefficient *  airDensity * area
+    dragForce = dragForce * (-linear_velocity.sign())
+    apply_central_force(dragForce)
+    if not stopped:
+        
+        if Input.is_action_pressed("FanButton"):
+            applyUpward()
+        else:
+            applyDownward()
 
 
 func applyUpward():
-	apply_central_force((Vector3.UP * upwardForceValue * mass))
-	if (rotation.z < deg_to_rad(maxAngle)):
-		angular_velocity.z = rotationalSpeedRad
-	else:
-		angular_velocity.z = 0
+    apply_central_force((Vector3.UP * upwardForceValue * mass))
+    if (rotation.z < deg_to_rad(maxAngle)):
+        angular_velocity.z = rotationalSpeedRad
+    else:
+        angular_velocity.z = 0
 
 func applyDownward():
-	if (rotation.z > deg_to_rad(minAngle)):
-		angular_velocity.z = -rotationalSpeedRad
-	else:
-		angular_velocity.z = 0
+    if (rotation.z > deg_to_rad(minAngle)):
+        angular_velocity.z = -rotationalSpeedRad
+    else:
+        angular_velocity.z = 0
 
 
 
 func _on_body_entered(body:Node):
-	
-	print("entered body"+body.name)
-	print("could be floor")
-	
-	if body.is_in_group("floor"):
-		print("floors")
-		if not stopped:
-			stopped = true
-			plane_collided.emit()
-		# dead
-	elif body.is_in_group("goal"):
-		# win
-		print("goal")
-	elif body.is_in_group("obstacle"):
-		# win
-		print("hit")
-		if not stopped:
-			stopped = true
-			plane_collided.emit()
-		
-		
-		
+    
+    print("entered body"+body.name)
+    print("could be floor")
+    
+    if body.is_in_group("floor"):
+        print("floors")
+        if not stopped:
+            stopped = true
+            plane_collided.emit()
+            get_tree().change_scene_to_file("res://Scenes/gameScenes/2d_gameScene.tscn")
+        # dead
+    elif body.is_in_group("goal"):
+        # win
+        print("goal")
+    elif body.is_in_group("obstacle"):
+        # win
+        print("hit")
+        if not stopped:
+            stopped = true
+            plane_collided.emit()
+        
+        
+        
 func applyFlies():
-	print("flies on")
-	mass += 0.3
-	
-	
+    print("flies on")
+    mass += 0.3
+    
+    
 
