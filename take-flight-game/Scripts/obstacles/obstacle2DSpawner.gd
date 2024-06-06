@@ -2,11 +2,11 @@ extends Node
 
 # spawn obstacles from the global ObstacleSpawningData.objectLocations object, almost the exact same as the 3d verision
 var baseObs = preload ("res://Scenes/obstacles/obstacleBase2D.tscn")
-var loadedTypes: Dictionary
 
 @onready var scaleHeight = %tempBackground.get_rect().size.y
 @onready var cellSize = %gridNode.cellSize
 @onready var spriteScale = %tempBackground.scale
+@onready var picker = $"../obstaclePicker"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,11 +25,8 @@ func loadObstacle(obstacle):
         instance = baseObs.instantiate()
         instance.name = obstacle.name
         self.add_child(instance)
-
-    if not loadedTypes.has(obstacle.spriteFor2D):
-            loadedTypes[obstacle.spriteFor2D] = load(obstacle.spriteFor2D)
     
-    instance.texture = loadedTypes[obstacle.spriteFor2D]
+    instance.texture = picker.getObsSprite(obstacle.spriteFor2D)
     instance.position = scale3Dto2D(obstacle.location)
     instance.set_meta("version3D", obstacle.version3D)
     instance.set_meta("gridLoc", obstacle.location)

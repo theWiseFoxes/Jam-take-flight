@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ianqhb1b2xs"]
+[gd_scene load_steps=8 format=3 uid="uid://4ianqhb1b2xs"]
 
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
-[ext_resource type="PackedScene" uid="uid://cjavb16ynt332" path="res://Scenes/obstacles/obstacleBase2D.tscn" id="1_qw7gf"]
 [ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="3_05ufi"]
+[ext_resource type="Script" path="res://Scenes/gameScenes/ObstaclePicker.gd" id="4_hxa2m"]
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="4_nvrp2"]
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacleMap.gd" id="8_3h7w2"]
+
+[sub_resource type="Resource" id="Resource_2i4h1"]
+script = ExtResource("8_3h7w2")
+asset3d = "res://Scenes/obstacles/obstacle_bouncing_ball.tscn"
+asset2d = "res://icon.svg"
+
+[sub_resource type="Resource" id="Resource_r7i82"]
+script = ExtResource("8_3h7w2")
+asset3d = "res://Scenes/obstacles/obstacle_brick.tscn"
+asset2d = "res://icon.svg"
 
 [node name="2dGameScene" type="Node2D"]
 
@@ -24,17 +35,11 @@ script = ExtResource("3_05ufi")
 unique_name_in_owner = true
 script = ExtResource("1_8birw")
 
-[node name="GridContainer" type="HBoxContainer" parent="."]
+[node name="obstaclePicker" type="HBoxContainer" parent="."]
 offset_left = 84.0
 offset_top = 20.0
 offset_right = 1014.0
 offset_bottom = 85.0
-
-[node name="Node2D3" parent="GridContainer" instance=ExtResource("1_qw7gf")]
-metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
-
-[node name="Node2D" parent="GridContainer" instance=ExtResource("1_qw7gf")]
-metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
-
-[node name="Node2D2" parent="GridContainer" instance=ExtResource("1_qw7gf")]
-metadata/Version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
+alignment = 1
+script = ExtResource("4_hxa2m")
+Obstaclelist = Array[Resource]([SubResource("Resource_2i4h1"), SubResource("Resource_r7i82")])

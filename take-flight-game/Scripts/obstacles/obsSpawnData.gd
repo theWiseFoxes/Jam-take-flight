@@ -8,14 +8,4 @@ var objLocs: Dictionary
 # the width and height of the background in meters
 var gridSize = Vector2(23, 12)
 
-func flatten(vec: Vector3):
-    return vec.x + (vec.y + 1) * vec.x
-
-func getCell(vec: Vector3):
-    return objLocs[floor(vec.x + (vec.y + 1) * vec.x)]
-
-func setCell(vec: Vector3, data):
-    objLocs[floor(vec.x + (vec.y) * vec.x)] = data
-
-func checkPos(vec: Vector3):
-    return objLocs.has(floor(vec.x + (vec.y) * vec.x))
+var obstacleAssets: Array[obstacleMap]
