@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjavb16ynt332"]
+[gd_scene load_steps=3 format=3 uid="uid://cjavb16ynt332"]
 
 [ext_resource type="Texture2D" uid="uid://xf5xhpqe83jn" path="res://icon.svg" id="1_8du1f"]
+[ext_resource type="Script" path="res://Scenes/obstacles/2dplacement.gd" id="2_gi6w8"]
 
 [node name="obstacleSprite" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)
@@ -8,4 +9,5 @@ texture = ExtResource("1_8du1f")
 centered = false
 region_enabled = true
 region_rect = Rect2(14, 14, 100, 100)
+script = ExtResource("2_gi6w8")
 metadata/version3D = "res://Scenes/obstacles/obstacle_brick.tscn"

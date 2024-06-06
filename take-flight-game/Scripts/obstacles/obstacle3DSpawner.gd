@@ -2,22 +2,22 @@ extends Node
 
 # spawn obstacles from the global ObstacleSpawningData.objectLocations object, almost the exact same as the 2d verision
 var loadedTypes: Dictionary
-@export var obstacleSize: float = 1.0 
+@export var obstacleSize: float = 1.0
 @onready var backgroundSize = %backgroundLayer.region_rect.size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    ObstacleSpawningData.gridRows = (backgroundSize.y / obstacleSize)* %backgroundLayer.pixel_size
-    ObstacleSpawningData.gridColumns = (backgroundSize.x / obstacleSize)* %backgroundLayer.pixel_size
+    ObsSpawnData.gridSize = (backgroundSize / obstacleSize) * %backgroundLayer.pixel_size
     loadAllObstacles()
 
 func loadAllObstacles():
     for obs in get_children():
-        if !ObstacleSpawningData.objectLocations.has(obs.name):
-            var data = obstaclesData.new(obs.name, obs.position, obs.get_meta("spriteFor2D"), obs.get_meta("version3D"))
-            ObstacleSpawningData.objectLocations[obs.name] = data
+        if !ObsSpawnData.objLocs.has(floor(obs.position)):
+            obs.set_meta("gridLoc", floor(obs.position))
+            var data = obstaclesData.new(obs.name, obs.get_meta("gridLoc"), obs.get_meta("spriteFor2D"), obs.get_meta("version3D"))
+            ObsSpawnData.objLocs[obs.get_meta("gridLoc")] = data
 
-    for entry in ObstacleSpawningData.objectLocations.values():
+    for entry in ObsSpawnData.objLocs.values():
         loadObstacle(entry)
 
 func loadObstacle(obstacle):
@@ -33,8 +33,9 @@ func loadObstacle(obstacle):
     instance.position = obstacle.location
     instance.set_meta("version3D", obstacle.version3D)
     instance.set_meta("spriteFor2D", obstacle.spriteFor2D)
+    instance.set_meta("gridLoc", obstacle.location)
 
 func updateGlobal():
     for obs in get_children():
-        var data = obstaclesData.new(obs.name, obs.position, obs.get_meta("spriteFor2D"), obs.get_meta("version3D"))
-        ObstacleSpawningData.objectLocations[obs.name] = data
+        var data = obstaclesData.new(obs.name, obs.get_meta("gridLoc"), obs.get_meta("spriteFor2D"), obs.get_meta("version3D"))
+        ObsSpawnData.objLocs[obs.get_meta("gridLoc")] = data

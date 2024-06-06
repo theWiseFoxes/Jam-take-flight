@@ -111,3 +111,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 7, 0)
 
 [node name="ObstacleBrick" parent="gameLayer/obstacleSpawner" instance=ExtResource("13_pqxct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 0)
+
+[connection signal="plane_collided" from="gameLayer/player" to="gameLayer/obstacleSpawner" method="updateGlobal"]
