@@ -29,7 +29,8 @@ func loadObstacle(obstacle):
     if instance == null:
         instance = ObsSpawnData.getLoadedType(obstacle.version3D)
         self.add_child(instance)
-
+        
+    instance.name = obstacle.name
     instance.position = obstacle.location * cellSize
     instance.set_meta("version3D", obstacle.version3D)
     instance.set_meta("spriteFor2D", obstacle.spriteFor2D)

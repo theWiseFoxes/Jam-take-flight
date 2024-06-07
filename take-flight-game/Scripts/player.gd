@@ -4,6 +4,7 @@ signal plane_collided
 
 @export var placementScene: String
 
+@export var speedChange: float = 0.01
 @export var upwardForceValue: float = 15
 @export var rotationalSpeedDeg: float = 30
 @export var startSpeed: Vector3 = Vector3(2, 0, 0)
@@ -50,13 +51,18 @@ func _physics_process(_delta):
             applyDownward()
 
 func applyUpward():
+
+    #linear_velocity.x = max(linear_velocity.x - speedChange / 4, 0)
+    apply_central_force(speedChange / 4 * Vector3.LEFT)
     apply_central_force((Vector3.UP * upwardForceValue * mass))
     if (rotation.z < deg_to_rad(maxAngle)):
         angular_velocity.z = rotationalSpeedRad
     else:
-        angular_velocity.z = 0
+        angular_velocity.z = speedChange
 
 func applyDownward():
+    #linear_velocity.x += speedChange
+    apply_central_force(speedChange * Vector3.RIGHT)
     if (rotation.z > deg_to_rad(minAngle)):
         angular_velocity.z = -rotationalSpeedRad
     else:

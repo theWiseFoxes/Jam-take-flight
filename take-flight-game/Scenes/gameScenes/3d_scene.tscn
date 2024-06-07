@@ -85,7 +85,7 @@ shape = SubResource("BoxShape3D_2b7yy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2834, 0.196, 0)
 shape = SubResource("CylinderShape3D_m3vfq")
 
-[node name="roof" type="StaticBody3D" parent="gameLayer" groups=["floor"]]
+[node name="roof" type="StaticBody3D" parent="gameLayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.0374, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gameLayer/roof"]

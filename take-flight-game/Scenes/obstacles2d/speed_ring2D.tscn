@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceq0ab12x2m1o"]
+
+[ext_resource type="Texture2D" uid="uid://xf5xhpqe83jn" path="res://icon.svg" id="1_vkk41"]
+[ext_resource type="Script" path="res://Scripts/2dplacement.gd" id="2_sc1hp"]
+
+[node name="obstacleSprite" type="Sprite2D"]
+texture = ExtResource("1_vkk41")
+centered = false
+region_enabled = true
+region_rect = Rect2(14, 14, 100, 100)
+script = ExtResource("2_sc1hp")
+metadata/version3D = "res://Scenes/obstacles/speed_ring.tscn"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/speed_ring2D.tscn"

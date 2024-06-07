@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dge1nlqrwxea7"]
+[gd_scene load_steps=22 format=3 uid="uid://dge1nlqrwxea7"]
 
 [ext_resource type="PackedScene" uid="uid://chjy4i16ags2x" path="res://Scenes/gameScenes/backgroundlayer3D.tscn" id="1_21i2i"]
 [ext_resource type="Texture2D" uid="uid://dbe65fet7l00p" path="res://Sprites/bedroom-map.png" id="2_2syyp"]
@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://bromsj0wkcwby" path="res://Scenes/obstacles/obstacle_drone_up.tscn" id="9_7ywuf"]
 [ext_resource type="PackedScene" uid="uid://chd2uc2yqtm7m" path="res://Scenes/obstacles/obstacle_wood_plank.tscn" id="10_ncu1l"]
 [ext_resource type="PackedScene" uid="uid://6ngnrx7vy3qw" path="res://Scenes/obstacles/obstacle_brick.tscn" id="11_ajrrs"]
+[ext_resource type="PackedScene" uid="uid://5o77gjc8dcwf" path="res://Scenes/obstacles/speed_ring.tscn" id="13_k6osd"]
+[ext_resource type="Script" path="res://Scripts/freezegame.gd" id="14_chvvl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60pi8"]
+size = Vector3(29.9296, 1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7k1ab"]
 size = Vector3(0.5, 0.1, 0.3)
@@ -46,6 +51,14 @@ texture = ExtResource("2_2syyp")
 region_enabled = false
 
 [node name="gameLayer" type="Node3D" parent="."]
+process_mode = 1
+
+[node name="roof" type="StaticBody3D" parent="gameLayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.1137, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gameLayer/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9648, -0.5, 0)
+shape = SubResource("BoxShape3D_60pi8")
 
 [node name="Camera3D" type="Camera3D" parent="gameLayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.724, 6.305, 2)
@@ -88,15 +101,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1616, 0.196, 0)
 shape = SubResource("CylinderShape3D_m3vfq")
 
 [node name="player" parent="gameLayer" instance=ExtResource("4_s1b7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57, 5.825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89867, 5.29141, 0)
 physics_material_override = SubResource("PhysicsMaterial_rhcei")
 placementScene = "res://Scenes/gameScenes/bedroom2D.tscn"
-upwardForceValue = 20.0
-startSpeed = Vector3(2, 0, 0)
+speedChange = 0.005
+startSpeed = Vector3(3, 0, 0)
 areaScale = Vector3(1, 1, 1)
 
 [node name="obstacleSpawner" type="Node3D" parent="gameLayer"]
 script = ExtResource("5_l2n1p")
+
+[node name="speedRing" parent="gameLayer/obstacleSpawner" instance=ExtResource("13_k6osd")]
+transform = Transform3D(0.998149, 0.060822, 0, -0.060822, 0.998149, 0, 0, 0, 1, 5, 5, 0)
+speedChange = 0.05
 
 [node name="Obstacle_Bouncing Ball" parent="gameLayer/obstacleSpawner" instance=ExtResource("6_rk0et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3, 0)
@@ -116,3 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 7, 0)
 
 [node name="ObstacleBrick" parent="gameLayer/obstacleSpawner" instance=ExtResource("11_ajrrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+process_mode = 2
+script = ExtResource("14_chvvl")

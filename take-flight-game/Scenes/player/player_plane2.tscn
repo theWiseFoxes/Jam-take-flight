@@ -10,6 +10,7 @@ size = Vector3(0.3, 2, 0.5)
 points = PackedVector3Array(0, 1, 0, 0.15, -1, -0.25, -0.15, -1, -0.25, 0.15, -1, 0.25, -0.15, -1, 0.25)
 
 [node name="player" type="RigidBody3D" groups=["player"]]
+axis_lock_linear_z = true
 mass = 0.02
 max_contacts_reported = 5
 contact_monitor = true

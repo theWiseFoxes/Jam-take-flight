@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5o77gjc8dcwf"]
+
+[ext_resource type="Script" path="res://Scripts/speedRing.gd" id="1_rspw0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_43pao"]
+height = 0.5
+radius = 1.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_nnnh6"]
+inner_radius = 0.85
+
+[node name="speedRing" type="Area3D"]
+script = ExtResource("1_rspw0")
+metadata/version3D = "res://Scenes/obstacles/speed_ring.tscn"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacleBase2D.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_43pao")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_nnnh6")
+
+[node name="point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08771, 0, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

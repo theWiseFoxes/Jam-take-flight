@@ -23,7 +23,8 @@ func loadObstacle(obstacle):
 	if instance == null:
 		instance = ObsSpawnData.getLoadedType(obstacle.spriteFor2D)
 		self.add_child(instance)
-	
+        
+	instance.name = obstacle.name
 	instance.position = scale3Dto2D(obstacle.location)
 	instance.set_meta("version3D", obstacle.version3D)
 	instance.set_meta("spriteFor2D", obstacle.spriteFor2D)
