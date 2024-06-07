@@ -75,6 +75,7 @@ func _on_body_entered(body: Node):
     elif body.is_in_group("goal"):
         # win
         print("goal")
+        get_tree().change_scene_to_file("res://Scenes/gameScenes/2d_gameScene.tscn")
     elif body.is_in_group("obstacle"):
         # win
         print("hit")
