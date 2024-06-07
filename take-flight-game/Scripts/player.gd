@@ -2,6 +2,8 @@ extends RigidBody3D
 
 signal plane_collided
 
+@export var placementScene: String
+
 @export var upwardForceValue: float = 15
 @export var rotationalSpeedDeg: float = 30
 @export var startSpeed: Vector3 = Vector3(2, 0, 0)
@@ -70,12 +72,12 @@ func _on_body_entered(body: Node):
         if not stopped:
             stopped = true
             plane_collided.emit()
-            get_tree().change_scene_to_file("res://Scenes/gameScenes/2d_gameScene.tscn")
+            gotoPlacement()
         # dead
     elif body.is_in_group("goal"):
         # win
         print("goal")
-        get_tree().change_scene_to_file("res://Scenes/gameScenes/2d_gameScene.tscn")
+        gotoPlacement()
     elif body.is_in_group("obstacle"):
         # win
         print("hit")
@@ -86,3 +88,6 @@ func _on_body_entered(body: Node):
 func applyFlies():
     print("flies on")
     mass += 0.3
+
+func gotoPlacement():
+    get_tree().change_scene_to_file(placementScene)

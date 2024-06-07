@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
 [ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="3_05ufi"]
-[ext_resource type="Script" path="res://Scenes/gameScenes/ObstaclePicker.gd" id="4_hxa2m"]
+[ext_resource type="Script" path="res://Scripts/obstacles/ObstaclePicker.gd" id="4_hxa2m"]
 [ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="4_nvrp2"]
 [ext_resource type="Script" path="res://Scripts/obstacles/obstacleMap.gd" id="8_3h7w2"]
 
@@ -42,4 +42,4 @@ offset_right = 1014.0
 offset_bottom = 85.0
 alignment = 1
 script = ExtResource("4_hxa2m")
-Obstaclelist = Array[Resource]([SubResource("Resource_2i4h1"), SubResource("Resource_r7i82")])
+Obstaclelist = Array[ExtResource("8_3h7w2")]([SubResource("Resource_2i4h1"), SubResource("Resource_r7i82")])
