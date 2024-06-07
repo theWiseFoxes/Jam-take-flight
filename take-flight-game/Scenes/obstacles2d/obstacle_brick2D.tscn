@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dosblffr6afou"]
+
+[ext_resource type="Texture2D" uid="uid://xf5xhpqe83jn" path="res://icon.svg" id="1_wj7ve"]
+[ext_resource type="Script" path="res://Scripts/2dplacement.gd" id="2_m0x0b"]
+
+[node name="obstacleSprite" type="Sprite2D"]
+texture = ExtResource("1_wj7ve")
+centered = false
+region_enabled = true
+region_rect = Rect2(14, 14, 100, 100)
+script = ExtResource("2_m0x0b")
+metadata/version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_brick2D.tscn"

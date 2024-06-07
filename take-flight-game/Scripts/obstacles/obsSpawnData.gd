@@ -8,4 +8,10 @@ var objLocs: Dictionary
 # the width and height of the background in meters
 var gridSize = Vector2(23, 12)
 
-var obstacleAssets: Array[obstacleMap]
+var obstacleAssets: Array[String]
+var loadedTypes: Dictionary
+
+func getLoadedType(typePath):
+    if not loadedTypes.has(typePath):
+        loadedTypes[typePath] = load(typePath)
+    return loadedTypes[typePath].instantiate()

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://plkxan6fe5yy"]
+
+[ext_resource type="Texture2D" uid="uid://xf5xhpqe83jn" path="res://icon.svg" id="1_6l2mm"]
+[ext_resource type="Script" path="res://Scripts/2dplacement.gd" id="2_cxj2o"]
+
+[node name="obstacleSprite" type="Sprite2D"]
+texture = ExtResource("1_6l2mm")
+centered = false
+region_enabled = true
+region_rect = Rect2(14, 14, 100, 100)
+script = ExtResource("2_cxj2o")
+metadata/version3D = "res://Scenes/obstacles/obstacle_iron_pipe.tscn"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_iron_pipe2D.tscn"

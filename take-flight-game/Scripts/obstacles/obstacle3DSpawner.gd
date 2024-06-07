@@ -27,10 +27,7 @@ func loadObstacle(obstacle):
     var instance = find_child(obstacle.name, false)
 
     if instance == null:
-        if not loadedTypes.has(obstacle.version3D):
-            loadedTypes[obstacle.version3D] = load(obstacle.version3D)
-        instance = loadedTypes[obstacle.version3D].instantiate()
-        instance.name = obstacle.name
+        instance = ObsSpawnData.getLoadedType(obstacle.version3D)
         self.add_child(instance)
 
     instance.position = obstacle.location * cellSize

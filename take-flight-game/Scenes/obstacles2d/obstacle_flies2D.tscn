@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhn4hgvb1rfr"]
+
+[ext_resource type="Texture2D" uid="uid://dvaequgqo621m" path="res://Sprites/obstacles-list.png" id="1_q8xo6"]
+[ext_resource type="Script" path="res://Scripts/2dplacement.gd" id="2_tevhj"]
+
+[node name="bouncing_ball" type="Sprite2D"]
+texture = ExtResource("1_q8xo6")
+centered = false
+region_enabled = true
+region_rect = Rect2(114, 14, 30, 30)
+script = ExtResource("2_tevhj")
+metadata/version3D = "res://Scenes/obstacles/obstacle_flies.tscn"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_flies2D.tscn"

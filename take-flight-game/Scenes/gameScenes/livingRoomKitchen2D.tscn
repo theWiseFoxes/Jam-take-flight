@@ -1,35 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ianqhb1b2xs"]
+[gd_scene load_steps=5 format=3 uid="uid://ckgs0lxyfjnpy"]
 
-[ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="1_8birw"]
-[ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="3_05ufi"]
-[ext_resource type="Script" path="res://Scripts/obstacles/ObstaclePicker.gd" id="4_hxa2m"]
-[ext_resource type="Texture2D" uid="uid://cbifk5pxlml3c" path="res://Sprites/temp-background.png" id="4_nvrp2"]
+[ext_resource type="Texture2D" uid="uid://b60mt5jc0kn7f" path="res://Sprites/livingroomkitchen-map.png" id="1_dytax"]
+[ext_resource type="Script" path="res://Scripts/drawGrid.gd" id="2_2gtgl"]
+[ext_resource type="Script" path="res://Scripts/obstacles/obstacle2DSpawner.gd" id="3_42ky3"]
+[ext_resource type="Script" path="res://Scripts/obstacles/ObstaclePicker.gd" id="4_kq3aj"]
 
 [node name="2dGameScene" type="Node2D"]
 
 [node name="tempBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(84, 87)
-scale = Vector2(0.405, 0.405)
-texture = ExtResource("4_nvrp2")
+position = Vector2(118, 244)
+scale = Vector2(3.33, 3.33)
+texture = ExtResource("1_dytax")
 centered = false
-region_enabled = true
 region_rect = Rect2(0, 434.714, 2300, 1200)
 
 [node name="gridNode" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_05ufi")
+script = ExtResource("2_2gtgl")
 
 [node name="Spawner2D" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_8birw")
-returnScene = "res://Scenes/gameScenes/3d_scene.tscn"
+script = ExtResource("3_42ky3")
 
 [node name="obstaclePicker" type="HBoxContainer" parent="."]
-offset_left = 84.0
-offset_top = 20.0
-offset_right = 1014.0
-offset_bottom = 85.0
+offset_left = 96.0
+offset_top = 108.0
+offset_right = 1026.0
+offset_bottom = 173.0
 alignment = 1
-script = ExtResource("4_hxa2m")
+script = ExtResource("4_kq3aj")
 Obstaclelist = Array[String](["res://Scenes/obstacles2d/bouncing_ball2D.tscn", "res://Scenes/obstacles2d/obstacle_balloon2D.tscn", "res://Scenes/obstacles2d/obstacle_brick2D.tscn", "res://Scenes/obstacles2d/obstacle_drone2D.tscn", "res://Scenes/obstacles2d/obstacle_flies2D.tscn", "res://Scenes/obstacles2d/obstacle_iron_pipe2D.tscn", "res://Scenes/obstacles2d/obstacle_wood_plank2D.tscn"])

@@ -29,7 +29,7 @@ size = Vector2(0.25, 0.01)
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 2.27935, 2.22434, 0.594162)
 gravity_space_override = 3
 metadata/version3D = "res://Scenes/obstacles/obstacle_drone_up.tscn"
-metadata/spriteFor2D = "res://icon.svg"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_drone2D.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441528, 0.00421143, -0.00942993)

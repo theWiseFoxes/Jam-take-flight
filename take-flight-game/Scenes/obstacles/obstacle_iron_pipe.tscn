@@ -8,7 +8,7 @@ radius = 0.09
 [node name="Obstacle_Iron_Pipe" type="Node3D"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 metadata/version3D = "res://Scenes/obstacles/obstacle_iron_pipe.tscn"
-metadata/spriteFor2D = "res://icon.svg"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_iron_pipe2D.tscn"
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 100.0

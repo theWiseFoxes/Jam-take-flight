@@ -5,7 +5,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_vnhck"]
 
 [node name="ObstacleBrick" type="Node3D"]
-metadata/spriteFor2D = "res://icon.svg"
+metadata/spriteFor2D = "res://Scenes/obstacles2d/obstacle_brick2D.tscn"
 metadata/version3D = "res://Scenes/obstacles/obstacle_brick.tscn"
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
